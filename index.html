@@ -2,182 +2,29 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Sorry for Everything!</title>
-	<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script&display=swap"
-		rel="stylesheet">
-	<style>
-		body {
-			font-family: 'Arial', sans-serif;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			min-height: 100vh;
-			background-color: #fce4ec;
-			/* A soft pink background */
-			margin: 0;
-			text-align: center;
-			overflow: hidden;
-			/* To prevent scrollbars if buttons move too much */
-		}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ask Her Out</title>
 
-		.big-emoji {
-			font-size: 8em;
-			/* Big size for the emoji */
-			margin-bottom: 20px;
-			animation: pulse 2s infinite;
-			/* Adds a subtle pulsing effect */
-		}
-
-		@keyframes pulse {
-			0% {
-				transform: scale(1);
-			}
-
-			50% {
-				transform: scale(1.1);
-			}
-
-			100% {
-				transform: scale(1);
-			}
-		}
-
-		.stylish-name {
-			font-family: 'Pacifico', cursive;
-			/* A stylish font for the name */
-			font-size: 3em;
-			color: #e91e63;
-			/* A vibrant pink */
-			margin-bottom: 30px;
-		}
-
-		.message {
-			font-size: 1.2em;
-			color: #6a1b9a;
-			/* A deep purple */
-			margin-bottom: 40px;
-			max-width: 80%;
-		}
-
-		.button-container {
-			display: flex;
-			gap: 20px;
-			/* Space between buttons */
-		}
-
-		button {
-			padding: 15px 30px;
-			font-size: 1.2em;
-			border: none;
-			border-radius: 8px;
-			cursor: pointer;
-			transition: transform 0.3s ease-out, background-color 0.3s ease-in-out;
-			color: white;
-			outline: none;
-		}
-
-		.yes-button {
-			background-color: #4CAF50;
-			/* Green */
-		}
-
-		.yes-button:hover {
-			background-color: #45a049;
-		}
-
-		.no-button {
-			background-color: #f44336;
-			/* Red */
-		}
-
-		.no-button:hover {
-			background-color: #da190b;
-		}
-
-		/* For the moving no button */
-		.move-away {
-			position: absolute;
-			/* Allows for smooth positioning */
-			transform: translate(var(--x, 0), var(--y, 0));
-			/* Gets x and y from inline style */
-			background-color: #ff9800;
-			/* Orange for extra emphasis */
-			border: 2px solid #e65100;
-		}
-	</style>
+  <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
+  <div class="container">
+    <div class="tenor-gif-embed" data-postid="22885016" data-share-method="host" data-aspect-ratio="1.04918"
+      data-width="100%">
+      <a href="https://tenor.com/view/manja-gif-22885016">Manja Sticker</a>from
+      <a href="https://tenor.com/search/manja-stickers">Manja Stickers</a>
+    </div>
+    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+    <h1>I Am Sorry. I messed up, Forgive me please 🥺</h1>
+    <p>~Roshan</p>
 
-	<div class="big-emoji">😘</div>
-	<div class="stylish-name">Dear Nidhi</div>
-	<div class="message">
-		I'm really, truly sorry. I messed up, and I hope you can forgive me.
-	</div>
-
-	<div class="button-container">
-		<button class="yes-button" onclick="handleYes()">Yes, I forgive you!</button>
-		<button class="no-button" id="noBtn">No, I don't!</button>
-	</div>
-
-	<script>
-		const noButton = document.getElementById('noBtn');
-		let currentX = 0;
-		let currentY = 0;
-		const moveDistance = 100; // Pixels to move away
-
-		function handleYes() {
-			alert("Yay! Thank you so much! You're the best!");
-			// You could optionally change the message or display something else here
-			document.querySelector('.message').textContent = "Thank you! You're amazing!";
-			document.querySelector('.big-emoji').style.animation = 'none'; // Stop animation
-			document.querySelector('.yes-button').style.display = 'none'; // Hide yes button if you want
-			document.querySelector('.no-button').style.display = 'none'; // Hide no button
-		}
-
-		noButton.addEventListener('click', () => {
-			// Generate a random direction for the button to move
-			const angle = Math.random() * 2 * Math.PI; // Random angle in radians
-			const randomX = Math.cos(angle) * moveDistance;
-			const randomY = Math.sin(angle) * moveDistance;
-
-			currentX += randomX;
-			currentY += randomY;
-
-			// Apply the move-away class and update CSS variables for position
-			// We need to make sure the button is positioned relatively or absolutely
-			// for transform to work as expected. Since body is flex, we make button-container relative.
-			if (!noButton.classList.contains('move-away')) {
-				noButton.classList.add('move-away');
-			}
-			noButton.style.setProperty('--x', `${currentX}px`);
-			noButton.style.setProperty('--y', `${currentY}px`);
-
-			// Optional: Add a small message if the button is clicked multiple times
-			if (noButton.dataset.clicks) {
-				noButton.dataset.clicks = parseInt(noButton.dataset.clicks) + 1;
-			} else {
-				noButton.dataset.clicks = 1;
-			}
-
-			if (noButton.dataset.clicks === '1') {
-				// If this is the first time it moved, maybe change the text
-				noButton.textContent = "Are you sure?";
-			} else if (noButton.dataset.clicks === '2') {
-				noButton.textContent = "Come on!";
-			} else if (parseInt(noButton.dataset.clicks) > 5) {
-				noButton.textContent = "You can't catch me! 😘";
-			}
-		});
-
-		// Ensure buttons are positioned correctly within the flex container
-		document.querySelector('.button-container').style.position = 'relative';
-		noButton.style.position = 'relative'; // For the transform to work nicely
-	</script>
-
+    <div class="btn">
+      <a href="yes.html">Yes</a>
+      <a href="no1.html">No</a>
+    </div>
+  </div>
 </body>
 
 </html>
