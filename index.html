@@ -4,6 +4,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    window.va = window.va || function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
   <title>Sorry to My Dear One</title>
 
   <link rel="stylesheet" href="./style.css" />
@@ -21,8 +27,12 @@
     <p>~Roshan</p>
 
     <div class="btn">
-      <a href="yes.html">Yes</a>
-      <a href="no1.html">No</a>
+      <a href="yes.html" onclick="va('event', { name: 'Accepted Immediately' })">
+        Yes
+      </a>
+      <a href="no1.html" onclick="va('event', { name: 'Rejected First Time' })">
+        No
+      </a>
     </div>
   </div>
 </body>
